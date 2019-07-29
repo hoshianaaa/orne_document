@@ -1,0 +1,20 @@
+自立走行中の一時停止、直進走行
+
+<一時停止>
+roslaunch orne_navigation_executor play_waypoints_nav_alpha.launch suspend:=true
+
+//suspend_poseの距離に近づくと停止する
+//rviz上のResumeWaypointsNavigationを押すと自立移動を再開する
+//suspend という引数をtureにすることで「orne_strategy/tsukuba_challenge.py」が機能する
+
+<suspend.yamlの編集>
+roslaunch orne_waypoints_editor edit_suspends_viz.launch map_file:=??? waypoints_file:=???
+
+//赤いのがsuspend_pose、緑がresume_pose
+//suspend_poseを右クリックとかで追加など可能
+//rviz上の「save waypoints」をクリックで「orne_strategy/suspend_cfg/suspend.yaml」が保存される
+
+<直線走行のやり方>
+suspend.yaml内
+suspend_poseにline_trackingという情報があるこれを0から1にするとsuspend_poseからresume_poseまで直線走行する
+
